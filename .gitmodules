@@ -1,0 +1,4 @@
+[submodule "lib/mlir"]
+	path = lib/mlir
+	url = https://github.com/rise-lang/mlir.git
+	branch = cc21_iree_compatible
