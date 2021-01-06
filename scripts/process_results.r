@@ -34,21 +34,22 @@ median_affine_1x784_784x128 <- median(unlist(affine_1x784_784x128))
 median_scf_1024 <- median(unlist(scf_1024))
 median_scf_1x784_784x128 <- median(unlist(scf_1x784_784x128))
 
-median_rise_1024
-median_rise_1x784_784x128
-median_rise_1024_opt
-median_rise_1x784_784x128_opt
-median_affine_1024
-median_affine_1x784_784x128
-median_scf_1024
-median_scf_1x784_784x128
+# convert times to ms
+median_rise_1024 <- median_rise_1024 * 1000
+median_rise_1x784_784x128 <- median_rise_1x784_784x128 * 1000
+median_rise_1024_opt <- median_rise_1024_opt * 1000
+median_rise_1x784_784x128_opt <- median_rise_1x784_784x128_opt * 1000
+median_affine_1024 <- median_affine_1024 * 1000
+median_affine_1x784_784x128 <- median_affine_1x784_784x128 * 1000
+median_scf_1024 <- median_scf_1024 * 1000
+median_scf_1x784_784x128 <- median_scf_1x784_784x128 * 1000
 
 # plot mm results
 png("plot_mm_1024_(fig10).png")
-barplot(c(median_scf_1024, median_rise_1024, median_affine_1024, median_rise_1024_opt), names.arg = c("SCF", "RISE", "Affine", "RISE opt"))
+barplot(c(median_scf_1024, median_rise_1024, median_affine_1024, median_rise_1024_opt), names.arg = c("SCF", "RISE", "Affine", "RISE opt"), xlab="matrix multiplication runtime (ms)")
 
 png("plot_mm_1x784_784x128_(fig10).png")
-barplot(c(median_scf_1x784_784x128, median_rise_1x784_784x128, median_affine_1x784_784x128, median_rise_1x784_784x128_opt), names.arg = c("SCF", "RISE", "Affine", "RISE opt"))
+barplot(c(median_scf_1x784_784x128, median_rise_1x784_784x128, median_affine_1x784_784x128, median_rise_1x784_784x128_opt), names.arg = c("SCF", "RISE", "Affine", "RISE opt"), xlab="matrix multiplication runtime (ms)")
 
 ################### convolutions (Fig. 12) ###################
 # read in data
@@ -104,4 +105,4 @@ speedup_4096 <- median_conv_4096 / median_sep_conv_4096
 
 # plot convolution results
 png("plot_conv_(fig12).png")
-barplot(c(speedup_128, speedup_256, speedup_512, speedup_1024, speedup_2048, speedup_4096), names.arg = c("128", "256", "512", "1024", "2048", "4096"))
+barplot(c(speedup_128, speedup_256, speedup_512, speedup_1024, speedup_2048, speedup_4096), names.arg = c("128", "256", "512", "1024", "2048", "4096"), xlab="2D separated convolution runtime speedup")
