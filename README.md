@@ -6,7 +6,6 @@ It includes the MLIR infrastructure with the \Rise dialect and corresponding pas
 ## Software dependencies
 All requirements are specified in the dockerfile and satisfied automatically when docker is used. The main requirements are:
 - Docker 
-- Downloading MLIR requires git. 
 - Building MLIR requires Ninja [https://ninja-build.org/](https://ninja-build.org/) and a working C++ toolchain including clang and lld.
 
 ```

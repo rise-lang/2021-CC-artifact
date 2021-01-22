@@ -19,22 +19,11 @@ RUN \
 # copy libs
 COPY /lib /home/lib
 
-# # init submodules
-# RUN \
-#   cd /home/lib/mlir && \
-#   git submodule update --init
-
 # build mlir
 RUN \
   cd home/lib/mlir && \
   cmake -G Ninja llvm -DLLVM_ENABLE_PROJECTS=mlir -DLLVM_BUILD_EXAMPLES=ON -DLLVM_TARGETS_TO_BUILD="host" -DCMAKE_BUILD_TYPE=Debug && \
   ninja mlir-opt mlir-cpu-runner mlir_runner_utils mlir-translate
-
-# # build iree
-# RUN \
-#   cd home/lib/iree/iree && \
-#   cmake -G Ninja .. -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ && \
-#   ninja iree_tools_iree-run-mlir
 
 # build support lib
 RUN \

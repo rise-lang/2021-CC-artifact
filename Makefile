@@ -1,6 +1,5 @@
 .PHONY: all
 all:
-	git submodule update --init
 	docker build . -t rise_artifact
 
 run:
